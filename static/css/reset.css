@@ -1,0 +1,556 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway/static/Raleway-Regular.ttf') format('woff');
+    font-weight: 400
+}
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('../fonts/Outfit/static/Outfit-Regular.ttf') format('woff');
+    font-weight: 400
+}
+
+:root{
+    --fs-fam:Raleway;
+
+    --fw-light:300;
+    --fw-normal:400;
+    --fw-bold:600;
+
+    --fs-200:0.5rem;
+    --fs-300:0.75rem;
+    --fs-400:0.9275rem;
+    --fs-500:1.25rem;
+    --fs-600:1.625rem;
+    --fs-700:1.7rem;
+    --fs-800:1.9rem;
+    --fs-900:2.2rem;
+    --fs-1000:2.5rem;
+
+    --txt-clr-light-neutral:#606470;
+    --txt-clr-dark-neutral:#333333;
+    
+    --txt-primary-light:#52C58B;
+    --txt-secondary-light:#FFFFFF;
+    --txt-tertiary-light:#458E67;
+
+    --padding-spacing:2rem;
+}
+
+@media (max-width: 60rem) {
+    :root{
+        --fs-1000:var(--fs-900);
+        --fs-900:var(--fs-800);
+        --fs-600:var(--fs-500);
+        --fs-500:var(--fs-500);
+        --fs-400:var(--fs-300);
+    }
+}
+
+@media (max-width: 45rem) {
+    :root{
+        --fs-1000:var(--fs-800);
+        --fs-900:var(--fs-700);
+        --fs-600:var(--fs-500);
+        --fs-500:var(--fs-400);
+        --fs-400:var(--fs-300);
+       }
+}
+/* Css Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+*{
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body{
+    height: 100%;
+    
+}
+html{
+    font-family: var(--fs-fam);
+    font-weight: var(--fw-normal);
+    line-height: 1.7;
+    color: var(--txt-clr-light-neutral);
+    background-color: #FFFFFF;
+}
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+a{
+    text-decoration: none;
+    color: #606470;
+}
+
+h1,
+h2,
+h3{
+        color: var(--txt-clr-dark-neutral);
+        line-height: 1.7;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    text-wrap: balance;
+}
+
+p,
+li,
+figcaption{
+    text-wrap: pretty;
+    max-width: 65ch;
+}
+
+header, footer,
+main,
+section,
+article{
+    container-type: inline-size;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+.fs-300{
+    font-size: var(--fs-300);
+}
+.fs-200{
+    font-size: var(--fs-200);
+}
+.fs-400{
+    font-size: var(--fs-400);
+}
+.fs-500{
+    font-size: var(--fs-500);
+}
+
+.fs-600{
+    font-size: var(--fs-600);
+}
+.fs-700{
+    font-size: var(--fs-700);
+}
+.fs-900{
+    font-size: var(--fs-900);
+}
+.fs-1000{
+    font-size: var(--fs-1000);
+}
+
+.txt-color-txt-clr-light-neutral{
+    color: var(--txt-clr-light-neutral);
+}
+.txt-color-txt-clr-dark-neutral{
+    color: var(--txt-clr-dark-neutral);
+}
+
+.fw-light{
+    font-weight: var(--fw-light);
+}
+.fw-regular{
+    font-weight: var(--fw-normal);
+}
+.fw-bold{
+    font-weight: var(--fw-bold);
+}
+
+
+span{
+    color: var(--txt-primary-light);
+}
+
+span.sidebar-icon{
+    color: #333333;
+}
+
+.Wrapper-wider{
+    width: min(90rem, 97% - 2rem);
+    margin-inline: auto;
+    
+}
+
+.Wrapper{
+    width: min(100rem, 90% - 2rem);
+    margin-inline: auto;
+}
+
+.Wrapper-narrow{
+    width: min(100rem, 85% - 5rem);
+    margin-inline: auto;
+}
+
+img[class]{
+    max-width: 11rem;
+}
+
+.custom-modal{
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+/* Modal content box */
+.custom-modal-content {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    width: 60%;
+    max-width: 36.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.app-form{
+    border-bottom: #c7c7c7 1px solid;
+}
+
+/* Close button */
+.close-btn {
+    color:rgb(252, 108, 108);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+
+.custom-modal-body{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-div >input,
+.input-div > textarea
+{
+    border: none;
+    outline: none; 
+    width: 100%;
+}
+
+.upload-cv,
+.input-div{
+    border: 2px solid #D9D9D9;
+    padding: 0.6rem 1rem;
+    border-radius: 0.3rem;
+    color: #606470;
+    width: 100%;
+}
+
+.group-field{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.submit-btn{
+    width:100%;
+    cursor: pointer;
+    background-color: #52C58B;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    color: #F6F6F6;
+}
+
+.submit-btn-app{
+    display: flex;
+
+}
+
+.main-content-admin{
+    background-color: #F6F7F9;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    overflow: hidden;
+    min-height: 100vh;
+    min-height: 100dvh;
+    
+}
+
+#main-content{
+    background-color: #FFFFFF;
+    margin-block: 1rem;
+    padding-block: 0.5rem;
+    padding-inline: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+
+
+/* table style */
+
+.table-container{
+    margin-top: 1rem;
+    background-color: #F6F6F6;
+    padding-block: 1rem;
+    padding-inline: 1rem;
+  
+    
+}
+
+
+
+.recruitmenttable,
+.pendingtable,
+.finaltable,
+.rejectedtable{
+    background-color: #FFFFFF;
+    padding-block: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+}
+
+.recruitmenttable tbody > .even,
+.pendingtable tbody > .even,
+.finaltable tbody > .even,
+.rejectedtable tbody > .even {
+    background-color: #F6F6F6;
+    color: #606470;
+    font-weight:500;
+    font-size: 0.8rem;
+
+}
+
+.recruitmenttable tbody > .odd,
+.pendingtable tbody > .odd,
+.finaltable tbody > .odd,
+.rejectedtable tbody > .odd  {
+    color: #606470;
+    font-weight:500;
+    font-size: 0.8rem;
+
+}
+
+.actions-style{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+.view-icon-style,
+.calendar-icon-style,
+.calendar-edit-icon-style,
+.cancel-icon-style,
+.approve-icon-style{
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.view-icon-style{
+    background-color: #668EBC;
+    transition: background-color 0.4s ease-in-out;
+}
+.view-icon-style:hover{
+    background-color: #2d609b;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.calendar-icon-style,
+.approve-icon-style{
+    background-color: #52C58B;
+}
+.calendar-icon-style:hover,
+.approve-icon-style:hover{
+    background-color: #27a064;
+    transition: background-color 0.4s ease-in-out;
+}
+.calendar-edit-icon-style{
+    background-color: #DDCD5A;
+    transition: background-color 0.4s ease-in-out;
+}
+.calendar-edit-icon-style:hover{
+    background-color: #ccb81f;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.cancel-icon-style{
+    background-color: #F76969;
+    transition: background-color 0.4s ease-in-out;
+}
+.cancel-icon-style:hover{
+    background-color: #f14848;
+    transition: background-color 0.4s ease-in-out;
+}
+
+/* table style */
+
+
+/* job filter style */
+.hiring-filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+    background-color: #F6F6F6;
+    padding-block: 1rem;
+    padding-inline: 1rem;
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+}
+
+.btn-add{
+    display: inline-flex;
+    justify-content: center;
+    gap: 1rem;
+    min-width: 10rem;
+    background-color: #52C58B;
+    padding-block: 0.3rem;
+    border-radius: 0.3rem;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.btn-add span{
+    color: #FFFFFF;
+}
+
+.filters{
+    background-color: #FFFFFF;
+    border-radius: 0.3rem;
+    padding-block: 0.3rem;
+    padding-inline: 1rem;
+    min-width: 10rem;
+}
+
+.filters >input{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    
+}
+/* Job Listing Filter */
+
+
+
+/* modal cancel and reject btn */
+.cancel-action,
+.reject-action{
+    padding-inline: 1rem;
+    padding-block: 0.3rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
+.cancel-action{
+    background-color: #C1C2C3;
+    transition: background-color 0.4s ease-in-out;
+    color: #FFFFFF;
+}
+.cancel-action:hover{
+    background-color: #a7a7a7;
+    transition: background-color 0.4s ease-in-out;
+    color: #FFFFFF;
+}
+.reject-action{
+    background-color: #DC6666;
+    transition: background-color 0.4s ease-in-out;
+    color: #FFFFFF;
+}
+
+.reject-action:hover{
+    background-color: #c94040;
+    transition: background-color 0.4s ease-in-out;
+    color: #FFFFFF;
+}
+
+/* modal cancel and reject btn */
+
+
+/* Nav-list style */
+
+.nav-list > * {
+    padding-block: 0.3rem;
+    border-bottom: 2px solid transparent; 
+    transition: border-bottom 0.6s ease-in-out;    
+    padding-inline: 0.5rem;
+}
+.signout-btn:hover{
+    cursor: pointer;
+    border-bottom: #27a064 2px solid;
+    transition: border-bottom 0.6s ease-in-out;    
+}
+
+/* Nav-list style */

@@ -1,0 +1,132 @@
+{% load static %}
+{% block content %}
+<link href= "{%static 'css/sidebar.css'%}" rel="stylesheet">
+
+<nav id="sidebar" class="sidebar">
+    <ul>
+        <li>
+            <span>
+                <img class="main-logo" src="{%static 'images/SecondaryJgcLogo.svg'%}" alt="">
+            </span>
+            <button class="logo" onclick=toggleSidebar() id="toggle-btn">
+                <span class="sidebar-icon material-symbols-outlined">
+                    view_sidebar
+                    </span>
+            </button>
+        </li>
+        <li>
+            <h5 id="general" class="fs-300 fw-bold">GENERAL</h5>
+        </li>
+        <li>
+            <a href="#" class = "ajax-link fw-bold fs-300">
+                <span class="sidebar-icon material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+        </li>
+        <li>
+            <a href="#" class = "ajax-link fw-bold fs-300">
+                <span class="sidebar-icon material-symbols-outlined">manage_accounts</span>
+                Att. Management
+            </a>
+        </li>
+        <!-- Add similar data-url attributes to other links -->
+        
+        <li>
+             <a href="#" class = "ajax-link fw-bold fs-300">
+                <span class="sidebar-icon material-symbols-outlined">
+                    bookmark_manager
+                    </span>
+                Leave Management
+            </a>
+        </li>
+        <li>
+             <a href="#" class = "ajax-link fw-bold fs-300">
+                <span class="sidebar-icon material-symbols-outlined">
+                    notifications
+                    </span>
+                Notifications
+            </a>
+        </li>
+        <li>
+            <a  href="#" class = "ajax-link fw-bold fs-300" data-url="{% url 'facemetrics' %}">
+                <span class="sidebar-icon material-symbols-outlined">
+                    familiar_face_and_zone
+                    </span>
+                Face Metrics
+            </a>
+        </li>
+        <li>
+            <h5 id="general2" class="fs-300 fw-bold">TEAM MANAGEMENT</h5>
+        </li>
+        <li>
+             <a href="#" class = "ajax-link fw-bold fs-300">
+                <span class="sidebar-icon material-symbols-outlined">
+                    groups
+                    </span>
+                Employees
+            </a>
+        </li>
+        <li>
+            <a href="#" class = "ajax-link fw-bold fs-300" data-url="{% url 'recruitorhiring' %}" >
+                <span class="sidebar-icon material-symbols-outlined">
+                    business_center
+                    </span>
+                Recruitment & Hiring
+            </a>
+        </li>
+        <li>
+              <a href="#" class = "ajax-link fw-bold fs-300">
+                <span class="sidebar-icon material-symbols-outlined">
+                    receipt_long
+                    </span>
+                Payroll Slips
+            </a>
+        </li>
+        <li>
+            <a href="#" class = "ajax-link fw-bold fs-300">
+               <span class="sidebar-icon material-symbols-outlined">
+                   timeline
+                   </span>
+               Memo & Movements
+           </a>
+       </li>
+        <li>
+            <h5 id="general3" class="fs-300 fw-bold">LIST</h5>
+        </li>
+        <li>
+             <a href="#" class = "ajax-link fw-bold fs-300">
+                <span class="sidebar-icon material-symbols-outlined">
+                    analytics
+                </span>
+                Salary Information
+            </a>
+        </li>
+        <li>
+            <a href="#" class = "ajax-link fw-bold fs-300" data-url="{% url 'joblisting' %}">
+              <span class="sidebar-icon material-symbols-outlined">
+                  work_update
+                  </span>
+              Job Listing
+          </a>
+      </li>
+        <li>
+            <a href="#" class = "ajax-link fw-bold fs-300" data-url="{% url 'useracc' %}">
+                <span class="sidebar-icon material-symbols-outlined">
+                    badge
+                    </span>
+                User Accounts
+            </a>
+        </li>
+     
+        <li>
+              <a href="#" class = "ajax-link fw-bold fs-300">
+                <span class="sidebar-icon material-symbols-outlined">
+                    location_city
+                    </span>
+                Branches
+            </a>
+        </li>
+    </ul>
+</nav>
+
+{%endblock%}

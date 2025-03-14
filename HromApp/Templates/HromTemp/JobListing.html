@@ -1,0 +1,421 @@
+
+{% load static %}
+
+
+<link href= "{%static 'css/JobListing.css'%}" rel="stylesheet">
+
+
+<div class="job-list-header">
+    <h1 class="fs-500 fw-bold">132 Job Found</h1>
+
+    <div class="record-list">
+        <label for="records_to_display" class="fs-400 txt-color-txt-clr-light-neutral">Show:</label>
+        <select class="fs-400 txt-color-txt-clr-light-neutral" name="records_to_display" id="records_to_display">
+            <option value="10" selected>10</option>
+            <option value="30">30</option>
+            <option value="60">60</option>
+            <option value="130">130</option>
+            <option value="260">230</option>
+            <option value="315">315</option>
+            <option value="{{total_employee}}">{{total_employee}}</option>
+        </select>
+    </div>
+</div>
+
+<div class="hiring-filter">
+    <button class="btn-add fs-400 fw-bold"  onclick="handleJobActionClick(event, 'addJob-custom-modal')"><span class="material-symbols-outlined" >
+            docs_add_on
+    </span>Add New Job</button>
+    <div class="filters branch-filter">
+        <input class="fs-400 fw-regular" type="text" placeholder="Select Branch">
+    </div>
+    <div class="filters job-filter">
+        <input class="fs-400 fw-regular" type="text" placeholder="Select Job Type">
+    </div>
+    <div class="filters date-filter">
+        <input class="fs-400 fw-regular txt-color-txt-clr-light-neutral" type="date">
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<div class="Job-lists">
+    {% for job in jobs %}
+    <div class="job-card">
+        <div class="job-settings">
+            <span class="material-symbols-outlined more-btn">
+                more_horiz
+            </span>
+            <div class="dropdown-menu">
+                <button class="edit-btn fs-400 fw-bold txt-color-txt-clr-light-neutral" 
+                        onclick="handleJobActionClick(event, 'editJob-custom-modal')" 
+                        data-emp-code="{{ job.JobCode }}">Edit</button>
+                <button class="remove-btn fs-400 fw-bold txt-color-txt-clr-light-neutral" 
+                        onclick="handleJobActionClick(event, 'deletejob-custom-modal')" 
+                        data-emp-code="{{ job.JobCode }}">Remove</button>
+            </div>
+        </div>
+        <div class="job-comp-header">
+
+            <div class="job-header">
+                <img class="company-logo" 
+                src="{% if job.BranchCode_id|slice:'0:3' == 'EMB' %}{% static 'branches_images/EMB-crop.svg' %}
+                {% elif job.BranchCode_id|slice:'0:3' == 'RFC' %}{% static 'branches_images/RFC-crop.svg' %}
+                {% elif job.BranchCode_id|slice:'0:3' == 'ELC' %}{% static 'branches_images/ELC-crop.svg' %}  
+                {% elif job.BranchCode_id|slice:'0:3' == 'FCH' %}{% static 'branches_images/FCH-crop.svg' %}  
+                {% else %}{% static 'branches_folder/default-crop.svg' %} 
+                {% endif %}" 
+                alt="Company Logo">
+
+                <div class="header-content">
+                    <h5 class="fs-400 fw-bold">{{ job.JobTitle }}</h5>
+                    <h6 class="fs-400 fw-regular txt-color-txt-clr-light-neutral">Capital Lending Corporation</h6>
+                </div>
+            </div>
+
+            <div class="job-address">
+                <span class="material-symbols-outlined">
+                    location_on
+                </span>
+                <p class="fs-300 fw-regular txt-color-txt-clr-light-neutral">{{ job.JobLoc }}</p>
+            </div>
+        </div>
+
+        <div class="job-body">
+            <div class="job-detail">
+                <h5 class="fs-300 fw-bold">Fresh Graduates</h5> <!-- You might want to make this dynamic -->
+                <h5 class="fs-300 fw-bold">Fulltime</h5> <!-- Could come from JobTypes -->
+            </div>
+            <p class="fs-300 fw-regular">{{ job.JobDesc }}</p>
+        </div>
+        <div class="job-footer">
+            <ul class="job-desc">
+                {% for job_type in job.JobTypes %}
+                    <li class="fs-200 fw-bold">{{ job_type }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="job-posted-date">
+            <p class="fs-300 fw-regular txt-color-txt-clr-light-neutral">
+                Posted {{ job.JobDate|timesince }} ago
+            </p>
+        </div>
+    </div>
+    {% empty %}
+        <p>No jobs available at the moment.</p>
+    {% endfor %}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ADD JOB LIST ----------------------------------------------------------------------------------->
+<div class="custom-modal" id="addJob-custom-modal">
+
+
+        <div class="custom-modal-content">
+       
+
+            <div class="custom-modal-header app-form">
+                <div class="jobdetails-header">
+                   <h1 class="fs-500 fw-bold">Job Information</h1>
+                </div>
+                <span class="close-btn" onclick="closetableModal()">&times;</span>
+            </div>
+     
+            <div class="custom-modal-body">
+                <form id="add-job-form" action="" class="add-job-form">
+                <div class="newJob-row-1">
+                    <div class="col-1">
+
+                        <div class="newJob-input-div">
+                            <label for="job-title" class="fs-400 fw-bold">Job Title</label>
+                            <div class="input-div">
+                                <input id="job-title" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" placeholder="Enter Job Title" type="text">
+                            </div>
+                        </div>
+
+                        <div class="newJob-input-div">
+                            <label for="job-location" class="fs-400 fw-bold">Job Location</label>
+                            <div class="input-div">
+                                <input id="job-location" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" placeholder="Enter Job Location" type="text">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-2">
+                        <label for="job-desc" class="fs-400 fw-bold">Job Descriptions</label>
+                        <div class="input-div">
+                            <textarea name="job-desc" id="job-desc" class="fs-400 fw-bold txt-color-txt-clr-light-neutral"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="newJob-row-1">
+                    <div class="col-1">
+                        <div class="newJob-input-div">
+                            <label for="emp-role" class="fs-400 fw-bold">Employee Role</label>
+                            <div class="input-div">
+                                <input id="emp-role" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" placeholder="Enter Employee Role" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-2">
+                        <div class="newJob-input-div">
+                            <label for="job-branch" class="fs-400 fw-bold">Job Branch</label>
+                            <div class="input-div">
+                                <select id="job-branch" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" required>
+                                    <option value="">Select Branch</option>
+                                    {% for branch in branches %}
+                                        <option value="{{ branch.BranchCode }}">{{ branch.BranchCode }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+
+
+                <div class="newJob-row-1">
+
+                    <div class="col-1">
+
+                        <div class="newJob-input-div">
+                            <label for="job-type" class="fs-400 fw-bold">Employment Type</label>
+                            <div class="job-type" id="job-type">
+                                <div class="employment-type-buttons">
+                                    <button type="button" class="employment-type-btn" data-type="Fulltime">Fulltime</button>
+                                    <button type="button" class="employment-type-btn" data-type="Freelance">Freelance</button>
+                                    <button type="button" class="employment-type-btn" data-type="Onsite">Onsite</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="newJob-input-div">
+                            <div class="job-benefits-flex">
+                                <label for="job-benefits" class="fs-400 fw-bold">Job Benefits</label>
+                                <span class="material-symbols-outlined add-benefit-icon" id="add-benefit-icon">
+                                    add_circle
+                                </span>
+                            </div>
+                            <div class="input-div">
+                              
+                                <ul id="benefit-list" >
+                               
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="col-2">
+                        <div class="job-qual-flex">
+                            <label for="job-qual" class="fs-400 fw-bold">Job Qualifications</label>
+                            <span class="material-symbols-outlined add-qualification-icon" id="add-qualification-icon">
+                                add_circle
+                            </span>
+                        </div>
+                        <div class="input-div" id="job-qual">
+           
+                            <ul id="qualification-list">
+                           
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="addJob-btns">
+                    <button class="add-job-btn fs-400 fw-bold">Add New Job</button>
+                </div>
+            </form>
+       
+            </div>
+
+   
+        </div>
+</div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- EDIT JOB LIST ----------------------------------------------------------------------------------->
+<div class="custom-modal" id="editJob-custom-modal">
+    <div class="custom-modal-content">
+        <div class="custom-modal-header app-form">
+            <div class="jobdetails-header">
+                <h1 class="fs-500 fw-bold">Edit Job Information</h1>
+            </div>
+            <span class="close-btn" onclick="closetableModal()">×</span>
+        </div>
+        <div class="custom-modal-body">
+            <form id="edit-job-form">
+                <input type="hidden" id="edit-job-code" name="job_code">
+
+                <div class="newJob-row-1">
+                    <div class="col-1">
+                        <div class="newJob-input-div">
+                            <label for="edit-job-title" class="fs-400 fw-bold">Job Title</label>
+                            <div class="input-div">
+                                <input id="edit-job-title" name="job_title" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" placeholder="Enter Job Title" type="text" required>
+                            </div>
+                        </div>
+                        <div class="newJob-input-div">
+                            <label for="edit-job-location" class="fs-400 fw-bold">Job Location</label>
+                            <div class="input-div">
+                                <input id="edit-job-location" name="job_location" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" placeholder="Enter Job Location" type="text" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <label for="edit-job-desc" class="fs-400 fw-bold">Job Descriptions</label>
+                        <div class="input-div">
+                            <textarea name="job_desc" id="edit-job-desc" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="newJob-row-1">
+                    <div class="col-1">
+                        <div class="newJob-input-div">
+                            <label for="edit-emp-role" class="fs-400 fw-bold">Employee Role</label>
+                            <div class="input-div">
+                                <input id="edit-emp-role" name="emp_role" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" placeholder="Enter Employee Role" type="text" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-2">
+                        <div class="newJob-input-div">
+                            <label for="edit-job-branch" class="fs-400 fw-bold">Job Branch</label>
+                            <div class="input-div">
+                                <select id="edit-job-branch" name="job_branch" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" disabled>
+                                    {% for branch in branches %}
+                                        <option readonly value="{{ branch.BranchCode }}">{{ branch.BranchCode }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="newJob-row-1">
+                    <div class="col-1">
+                        <div class="newJob-input-div">
+                            <label for="edit-job-benefits" class="fs-400 fw-bold">Employment Type</label>
+                            <div class="job-benefits" id="edit-job-benefits">
+                                <ul class="job-desc">
+                                    <li><button type="button" class="employment-type-btn" data-type="Fulltime">Fulltime</button></li>
+                                    <li><button type="button" class="employment-type-btn" data-type="Freelance">Freelance</button></li>
+                                    <li><button type="button" class="employment-type-btn" data-type="Onsite">Onsite</button></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="newJob-input-div">
+                            <div class="job-benefits-flex">
+                                <label for="edit-job-benefits-list" class="fs-400 fw-bold">Job Benefits</label>
+                                <span class="material-symbols-outlined" id="edit-add-benefit-icon">add_circle</span>
+                            </div>
+                            <div class="input-div" id="edit-job-benefits-list">
+                                <ul id="edit-benefit-list"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="newJob-input-div">
+                            <div class="job-qual-flex">
+                                <label for="edit-job-qual" class="fs-400 fw-bold">Job Qualifications</label>
+                                <span class="material-symbols-outlined" id="edit-add-qualification-icon">add_circle</span>
+                            </div>
+                            <div class="input-div" id="edit-job-qual">
+                                <ul id="edit-qualification-list"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="addJob-btns">
+                    <button type="submit" class="add-job-btn fs-400 fw-bold">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- DELETE MODAL -->
+<div class="custom-modal" id="deletejob-custom-modal">
+    <div class="custom-modal-content">
+        <div class="custom-modal-header">
+            <div class="job-comp-header">
+                <div class="job-header">
+                    <img class="company-logo" src="{% static 'images/Emb-logo-crop.svg' %}" alt="">
+                    <div class="header-content">
+                        <h5 class="fs-400 fw-bold" id="delete-job-title"></h5>
+                        <h6 class="fs-400 fw-regular txt-color-txt-clr-light-neutral" id="delete-job-branch"></h6>
+                    </div>
+                </div>
+                <!-- <div class="job-address">
+                    <span class="material-symbols-outlined">location_on</span>
+                    <p class="fs-300 fw-regular txt-color-txt-clr-light-neutral" id="delete-job-location"></p>
+                </div> -->
+            </div>
+            <span class="close-btn" onclick="closetableModal()">×</span>
+        </div>
+        <div class="custom-modal-body">
+            <input type="hidden" class="JobCode" name="JobCode">
+            <h1 class="fs-500 fw-bold txt-color-txt-clr-light-neutral">Are you sure you want to remove this job?</h1>
+            <div class="btn-action-modal">
+                <button class="cancel-action fs-400 fw-bold" onclick="closetableModal()">Cancel</button>
+                <button class="reject-action fs-400 fw-bold" onclick="deleteJob()">Remove</button>
+            </div>
+        </div>
+    </div>
+</div>

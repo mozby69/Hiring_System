@@ -1,0 +1,651 @@
+{% extends "HromTemp/base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+<link rel="stylesheet" href="{%static 'css/Jobsearch.css'%}">
+
+    <div class="nav">
+        <div class="secondary-logo">
+        <a href="#main-section" class="main-section"> <img class="secondary-logo-img" src="{%static 'images/SecondaryJgcLogo.svg'%}" alt=""></a>
+        
+        </div>
+
+        <div class="nav-list">
+    
+            <ul class="nav-tabs">
+              
+                <li class="nav-item">
+                    <a class="nav-link active fs-400 fw-bold txt-color-txt-clr-light-neutral" data-target="Job-Search">Job Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fs-400 fw-bold txt-color-txt-clr-light-neutral" data-target="Profile">User Profile</a>
+                </li>
+            </ul>
+            <div class="signout-btn">
+                <a id="logoutBtn" class="fs-400 fw-bold">Sign out</a>
+            </div>
+            
+
+        </div>
+     
+        
+    </div>
+
+
+    <div class="tab-content active" id="Job-Search">
+        <header class="jobsearch-header">
+            <div class="Wrapper header-content">
+                <h5 class="fs-600 fw-bold">Are you the One?</h5>
+                <p class="fs-500 fw-regular">Connecting Talent And Opportunities</p>
+            </div>
+        </header>
+        <main class="Wrapper main-jobsearch">
+            <div class="jobsearch-container">
+                <div class="joblist-container">
+                    <div class="Wrapper filters-container">
+                        <div class=" record-list">
+                            <label for="records_to_display">Show:</label>
+                            <select name="records_to_display" id="records_to_display">
+                                <option value="10" selected>10</option>
+                                <option value="30">30</option>
+                                <option value="60">60</option>
+                                <option value="130">130</option>
+                                <option value="260">230</option>
+                                <option value="315">315</option>
+                                <option value="{{total_employee}}">{{total_employee}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="job-list">
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Finance & Admin Manager
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-CEBU
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Branch Operation Manager
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-MIAG-AO
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+        
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Discounting Officer
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-TAGBILARAN
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Finance & Admin Manager
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-ILOILO
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Branch Operation Manager
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-MIAG-AO
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+        
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Discounting Officer
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-TAGBILARAN
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Finance & Admin Manager
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-ILOILO
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Branch Operation Manager
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-MIAG-AO
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+        
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Discounting Officer
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-TAGBILARAN
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Finance & Admin Manager
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-ILOILO
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Branch Operation Manager
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-MIAG-AO
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+        
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Discounting Officer
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-TAGBILARAN
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Finance & Admin Manager
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-ILOILO
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Branch Operation Manager
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-MIAG-AO
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+        
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Discounting Officer
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-TAGBILARAN
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Finance & Admin Manager
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-ILOILO
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Branch Operation Manager
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-MIAG-AO
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+        
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Discounting Officer
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-TAGBILARAN
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+                        <div class="job-list-card">
+                            <div class="job-card-header">
+                                <h3 class="fs-400 fw-bold">
+                                    Finance & Admin Manager
+                                </h3>
+                                <h6 class="fs-400">
+                                    EMB-ILOILO
+                                </h6>
+                            </div>
+                            <div class="job-card-req">
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/withresumeicon.svg'%}" alt=""></span>Apply With Resume</p>
+                                <p class="fs-300 job-details"><span><img src="{%static 'images/compsalaryicon.svg'%}" alt=""></span>With Competitive Salary Package</p>
+                            </div>
+                            <div class="job-card-btn">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn">Apply now</button>
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+                <div class="jobview-container">
+        
+                        <div class="jobfilter-container">
+                            <select name="Branch" id="Branch-Filter" class="Filters-style Branch-Filter">
+                                <option value="All">🏛 All Branches</option>
+                                <option value="EMB-MAIN">EMB-MAIN</option>
+                                <option value="EMB-CADIZ">EMB-CADIZ</option>
+                            </select>
+        
+                            <select name="Job" id="Job-Filter" class="Filters-style Job-Filter">
+                                <option value="All">💼 Job Type</option>
+                                <option value="EMB-MAIN">Financial</option>
+                                <option value="EMB-CADIZ">Technical</option>
+                            </select>
+        
+                            <button  id="submit-filter-btn" class=" fs-400 fw-bold submit-filter-btn">Submit filter</button>
+                        </div>
+                        <div class="jobdetails-container">
+                            <div class="jobdetails-header">
+                                <img class="company-logo" src="{%static 'images/Emb-logo.svg'%}" alt="">
+                                <div class="job-title-desc">
+                                    <h1 class="fs-500 fw-bold">Finance & Admin Manager</h1>
+                                    <ul class="job-desc">
+                                        <li class="fs-300 fw-bold">Fulltime</li>
+                                        <li class="fs-300 fw-bold">Onsite</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="job-address">
+                                <p class="fs-400 fw-bold">74 Panganiban street, Cebu city</p>
+                            </div>
+                            <div class="about-job">
+                                <h1 class="fs-500 fw-bold">About this role</h1>
+                                <p class="fs-300 fw-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                            <div class="job-qualification">
+                                <h1 class="fs-500 fw-bold">Qualifications</h1>
+                                <div class="Wrapper qual-row">
+                                    <ul class="job-qualification">
+                                        <li class="fs-300 fw-bold">Male / Female</li>
+                                        <li class="fs-300 fw-bold"> Accounting Graduate or other related Field</li>
+                                        <li class="fs-300 fw-bold"> Previous in accounting is a definite advantage</li>
+                                        <li class="fs-300 fw-bold"> Proficient in Microsoft Office</li>
+                                        <li class="fs-300 fw-bold"> Proficient in Microsoft Office</li>
+                                    </ul>
+                                    <ul class="job-qualification">
+                                        <li class="fs-300 fw-bold">Male / Female</li>
+                                        <li class="fs-300 fw-bold"> Accounting Graduate or other related Field</li>
+                                        <li class="fs-300 fw-bold"> Previous in accounting is a definite advantage</li>
+                                        <li class="fs-300 fw-bold"> Proficient in Microsoft Office</li>
+                                        <li class="fs-300 fw-bold"> Proficient in Microsoft Office</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="job-benefits">
+                                <h1 class="fs-500 fw-bold">Benefits</h1>
+                                <ul class="job-benefits">
+                                    <li class="fs-300 fw-bold">Saturday and Sunday Off</li>
+                                    <li class="fs-300 fw-bold"> Competitive Salary</li>
+                                    <li class="fs-300 fw-bold"> 13th to 16th month pay</li>
+                                </ul>
+                            </div>
+                            <div class="send-app-footer">
+                                <button  id="apply-btn" class=" fs-400 fw-regular apply-btn  send-application"  onclick="openModal()">Send application</button>
+                            </div>
+        
+                        </div>
+        
+                </div>
+            </div>
+        
+        </main>
+        <div class="custom-modal" id="custom-modal">
+            <div class="custom-modal-content">
+                <div class="custom-modal-header">
+                    <div class="jobdetails-header">
+                        <img class="company-logo" src="{%static 'images/Emb-logo.svg'%}" alt="">
+                        <div class="job-title-desc">
+                            <h1 class="fs-500 fw-bold">Finance & Admin Manager</h1>
+                            <ul class="job-desc">
+                                <li class="fs-300 fw-bold">Fulltime</li>
+                                <li class="fs-300 fw-bold">Onsite</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                </div>
+                <div class="custom-modal-body">
+                    <div>
+                        <label for="fileupload" class="fs-300">Upload your resume/cv</label>
+                        <div class="upload-cv" id="fileupload">
+                            <input type="file" id="fileInput" name="file">
+                        </div>
+                    </div>
+                    <div class="group-field">
+                        <div class="input-div">
+                            <input class="fs-400 fw-regular" placeholder="Expected Salary" type="text">
+                        </div>
+        
+                        <div class="input-div">
+                            <input class="fs-400 fw-regular" placeholder="Years of Experience" type="text">
+                        </div>
+                    </div>
+                    <div class="submit-btn-app">
+                        <button  id="submit-btn" class=" fs-400 fw-regular submit-btn">Submit application</button>
+                    </div>
+                </div>
+                <div class="custom-modal-footer">
+        
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+{% comment %} Profile view {% endcomment %}
+    <div class="tab-content" id="Profile">
+        <header class="profile-header">
+            <div class="Wrapper header-content">
+                <h5 class="fs-600 fw-bold">Profile View</h5>
+                <p class="fs-500 fw-regular">Edit And View Profile Details</p>
+            </div>
+            <img src="https://api.dicebear.com/7.x/adventurer/svg" alt="Profile" class="profile-image">
+
+
+        </header>
+       
+        <main class="main-body">
+
+            <div class="Wrapper user-info">
+                <div class="user-fullname">
+                    <h1 class="fs-700 fw-bold">{{user_details.UserFullname}}</h1>
+                </div>
+                <div class="user-address">
+                    <p id="editable-address-paragraph" class="fs-400 fw-regular txt-color-txt-clr-light-neutral" contenteditable="false">{%if user_info.UserAddress and user_info.UserAddress != "N/D"%}
+                        {{user_info.UserAddress}}
+                        {%else%}
+                        No Stated Address!
+                        {%endif%}</p>
+                </div>
+                <div class="user-data">
+                    <div class="user-applications app-data">
+                        <label for="app" class="fs-400 fw-bold txt-color-txt-clr-light-neutral ">
+                            Applications
+                        </label>
+                        <h5 id="app", class="fs-500 fw-bold txt-color-txt-clr-light-neutral">0</h5>
+                    </div>
+                    <div class="user-rejected app-data">
+                        <label for="reject" class="fs-400 fw-bold txt-color-txt-clr-light-neutral">
+                            Rejections
+                        </label>
+                        <h5 id="reject", class="fs-500 fw-bold txt-color-txt-clr-light-neutral">0</h5>
+                    </div>
+                    <div class="active-status">
+                        <button class="fs-400 fw-bold txt-color-txt-clr-dark-neutral status-btn app-btn">
+                            {%if user_details.is_active%}
+                            Active
+                            {%else%}
+                            Offline
+                            {%endif%}
+                        </button>
+                    </div>
+                    <div class="user-resume">
+                        <button class="fs-400 fw-bold txt-color-txt-clr-dark-neutral resume-btn app-btn">Resume</button>
+                    </div>
+                </div>
+            </div>
+            <div class="Wrapper user-body">
+                <div class="user-desc">
+                    <div class="about-user">
+                        <h1 class="fs-500 fw-bold txt-color-txt-clr-dark-neutral">About</h1>
+                        <p id="editable-about-paragraph" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" contenteditable="false">
+                            {% if user_info.AboutUser %}
+                                {{ user_info.AboutUser }}
+                            {% else %}
+                                Describe About yourself here!
+                            {% endif %}
+                        </p>
+                    </div>
+                    
+                  
+                    <div class="user-skill">
+                        <div class="Skill-sets">
+                            <h1 class="fs-500 fw-bold txt-color-txt-clr-dark-neutral">Skills</h1>
+                            <span class="material-symbols-outlined add-skill-sets">
+                                add_box
+                            </span>
+                        </div>
+                        <ul class="skill-list">
+                            {%for skills in user_info.UserSkills%}
+                            <li>
+                                <div class="skill-el">
+                                    <h5 class="fs-400 fw-bold txt-color-txt-clr-light-neutral">{{skills}}</h5>
+                                </div>
+                                  <button class="close-btn-skill" data-skills="{{skills}}">&times;</button>
+                            </li>
+                            {%endfor%}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="user-acc-info">
+                    <div class="acc-settings">
+                    <h1 class="fs-500 fw-bold txt-color-txt-clr-dark-neutral">Account Settings</h1>
+                    </div>
+
+                    <ul class="user-details">
+
+                        <li class="user-item">
+                            <div class="user-label">
+                                <span class="label-icon material-symbols-outlined txt-color-txt-clr-light-neutral">account_circle</span>
+                                <span class="fs-400 fw-bold label txt-color-txt-clr-light-neutral">Username</span>
+                            </div>
+                            <input type="text" class="user_inputs fs-400 fw-bold txt-color-txt-clr-light-neutral" value="{{user_details.Username}}">
+                        </li>
+            
+                        <li class="user-item">
+                            <div class="user-label">
+                                <span class="label-icon material-symbols-outlined txt-color-txt-clr-light-neutral">call</span>
+                                <span class="fs-400 fw-bold label txt-color-txt-clr-light-neutral">Contact</span>
+                            </div>
+                            <input type="text" class="user_inputs fs-400 fw-bold txt-color-txt-clr-light-neutral" value="{{user_details.ContactNum}}">
+                        </li>
+            
+                        <li class="user-item">
+                            <div class="user-label">
+                                <span class="label-icon material-symbols-outlined txt-color-txt-clr-light-neutral">passkey</span>
+                                <span class="fs-400 fw-bold label txt-color-txt-clr-light-neutral">Password</span>
+                            </div>
+                            <input type="password" class="user_inputs fs-400 fw-bold txt-color-txt-clr-light-neutral" value="{{user_details.Password}}">
+                        </li>
+            
+                        <li class="user-item">
+                            <div class="user-label">
+                                <span class="label-icon material-symbols-outlined txt-color-txt-clr-light-neutral">mail</span>
+                                <span class="fs-400 fw-bold label txt-color-txt-clr-light-neutral">Gmail</span>
+                            </div>
+                            <input type="text" class="user_inputs fs-400 fw-bold txt-color-txt-clr-light-neutral" value="{{user_details.Email}}">
+                        </li>
+                        
+                    </ul>
+                </div>    
+            </div>
+        </main>
+     
+    </div>
+
+    <script src="{% static 'js/reqHandler.js' %}"></script>
+    <script src="{% static 'js/custom-modal.js' %}"></script> 
+    <script src="{% static 'js/Jobsearch.js' %}"></script> 
+<!-- <script src="{% static 'js/customerReq.js' %}"></script> -->
+    <script src="{% static 'js/sweetalert.js'%}"></script>
+ 
+
+{%endblock content%}

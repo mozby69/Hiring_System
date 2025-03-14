@@ -1,0 +1,45 @@
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/FaceMetrics.css' %}">
+
+<div class="Container">
+  
+    <div class="Initializations">
+        
+        <div class="Circle">
+            <div id="lottie">
+                <lottie-player
+                  src="{% static 'lottie/Animation - 1731306879625.json' %}"
+                  background="transparent"
+                  speed="1"
+                  loop
+                  autoplay>
+                </lottie-player>
+            </div>
+            
+        </div>
+        <h1 id="face-metrics-message" class="fs-500 fw-bold" style="display: none;">
+            Don't Reload the page Face Metrics is Updating
+        </h1>
+        <div class="Init-btn">
+            <button id="init-btn" class="init-btn fs-500 fw-bold">Update Face Metrics</button>
+        </div>
+        
+
+        <div class="exist-emp">
+            <h1 class="fs-500 fw-bold text-clr-Tertiary-accent">Existing Employee</h1>
+            <div class="exist-emp-card" id="existing-emp-list">
+                <!-- Existing employees will be inserted here -->
+            </div>
+        </div>
+        
+        <div class="new-emp">
+            <h1 class="fs-500 fw-bold text-clr-Tertiary-accent">Newly Added Employee</h1>
+            <div class="new-emp-card" id="new-emp-list">
+                <!-- Newly added employees will be inserted here -->
+            </div>
+        </div>
+        
+    </div>
+</div>

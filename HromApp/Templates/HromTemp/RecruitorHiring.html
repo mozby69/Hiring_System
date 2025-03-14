@@ -1,0 +1,314 @@
+{% load static %}
+<link href= "{%static 'css/RecruitorHiring.css'%}" rel="stylesheet">
+
+
+<div class="container-summary">
+    <div class="summary">
+        <div class="contents">
+            <h5 class="fs-600 fw-bold">1293</h5>
+            <h6 class="fs-300 fw-bold txt-color-txt-clr-light-neutral">New Applications </h6>
+            <button class="contents-btn fs-400" onclick= "showTable('newApplications')">View Details</button>
+        </div>
+         
+        
+    </div>
+    <div class="summary">
+        <div class="contents">
+            <h5 class="fs-600 fw-bold">1293</h5>
+            <h6 class="fs-300 fw-bold txt-color-txt-clr-light-neutral">Pending Applications</h6>
+             <button class="contents-btn fs-400" onclick= "showTable('pendingApplications')">View Details</button>
+        </div>
+          
+    </div>
+    <div class="summary">
+        <div class="contents">
+            <h5 class="fs-600 fw-bold">1293</h5>
+            <h6 class="fs-300 fw-bold txt-color-txt-clr-light-neutral">Progress Applications</h6>
+             <button class="contents-btn fs-400" onclick= "showTable('progressApplications')">View Details</button>
+        </div>
+      
+        
+    </div>
+    <div class="summary">
+        <div class="contents">
+            <h5 class="fs-600 fw-bold">1293</h5>
+            <h6 class="fs-300 fw-bold txt-color-txt-clr-light-neutral">Rejected Applications</h6>
+             <button class="contents-btn fs-400"onclick= "showTable('rejectApplications')">View Details</button>
+        </div>
+        
+        
+    </div>
+</div>
+
+<div class="hiring-filter">
+        <button class="btn-add fs-400 fw-bold"><span class="material-symbols-outlined">
+            docs_add_on
+            </span>Add Applicant</button>
+        <div class="filters branch-filter">
+            <input class="fs-400 fw-regular" type="text" placeholder="Select Branch">
+        </div>
+        <div class="filters job-filter">
+            <input class="fs-400 fw-regular" type="text" placeholder="Select Job Type">
+        </div>
+        <div class="filters date-filter">
+            <input class="fs-400 fw-regular txt-color-txt-clr-light-neutral" type="date">
+        </div>
+
+</div>
+
+
+<div class="table-container" id="newApplications">
+    <table id="defaultdatatable" class="table recruitmenttable table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th class="fs-400 fw-bold">Applicant Name</th>
+                <th class="fs-400 fw-bold">Date Applied</th>
+                <th class="fs-400 fw-bold">Job Title</th>
+                <th class="fs-400 fw-bold">Year of Exp</th>
+                <th class="fs-400 fw-bold">Expected Salary</th>
+                <th class="fs-400 fw-bold">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+        </tbody>
+    </table>
+    
+</div>
+
+
+<div class="table-container" id="pendingApplications" style="display:none;">
+    <table id="defaultdatatable" class="table pendingtable table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th class="fs-400 fw-bold">Applicant Name</th>
+                <th class="fs-400 fw-bold">Scheduled Date</th>
+                <th class="fs-400 fw-bold">Job Title</th>
+                <th class="fs-400 fw-bold">Scheduled By</th>
+                <th class="fs-400 fw-bold">Status</th>
+                <th class="fs-400 fw-bold">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+        </tbody>
+    </table>
+    
+</div>
+
+<div class="table-container" id="progressApplications" style="display:none;">
+    <table id="defaultdatatable" class="table finaltable table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th class="fs-400 fw-bold">Applicant Name</th>
+                <th class="fs-400 fw-bold">Assesment Date</th>
+                <th class="fs-400 fw-bold">Interview</th>
+                <th class="fs-400 fw-bold">Exams</th>
+                <th class="fs-400 fw-bold">CI/BI</th>
+                <th class="fs-400 fw-bold">Final Interview</th>
+                <th class="fs-400 fw-bold">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+        </tbody>
+    </table>
+    
+</div>
+
+<div class="table-container" id="rejectApplications" style="display:none;">
+    <table id="defaultdatatable" class="table rejectedtable table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th class="fs-400 fw-bold">Applicant Name</th>
+                <th class="fs-400 fw-bold">Rejected Date</th>
+                <th class="fs-400 fw-bold">Application Stage</th>
+                <th class="fs-400 fw-bold">Remarks</th>
+                <th class="fs-400 fw-bold">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+        </tbody>
+    </table>
+</div>
+
+<!-- VIEW MODADL -->
+<div class="custom-modal" id="view-custom-modal">
+    <div class="custom-modal-content">
+        <div class="custom-modal-header">
+            <div class="jobdetails-header">
+                <img class="company-logo" src="{% static 'images/Emb-logo.svg' %}" alt="Company Logo">
+                <div class="job-title-desc">
+                    <h1 class="fs-500 fw-bold"></h1>
+                    <ul class="job-desc">
+                        <li class="fs-200 fw-bold">Fulltime</li>
+                        <li class="fs-200 fw-bold">Onsite</li>
+                    </ul>
+                </div>
+            </div>
+            <span class="close-btn" onclick="closetableModal()">&times;</span>
+        </div>
+        <div class="custom-modal-body">
+            <div class="input-div">
+                <input id="applicant-name" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" placeholder="Enter your fullname" type="text">
+            </div>
+
+            <div>
+                <label for="fileDownload" class="fs-300">Download your resume/cv</label>
+                <div class="upload-cv">
+                    <a id="fileDownload" class="download-link" href="#" download="Resume.pdf">
+                        Download Resume/CV <span class="material-symbols-outlined"> download </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="group-field">
+                <div class="input-div">
+                    <input id="expected-salary" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" placeholder="Expected Salary" type="text">
+                </div>
+                <div class="input-div">
+                    <input id="years-of-exp" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" placeholder="Years of Experience" type="text">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- EDIT MODADL -->
+<div class="custom-modal" id="edit-custom-modal">
+    <div class="custom-modal-content">
+        <div class="custom-modal-header">
+            <div class="jobdetails-header">
+                <img class="company-logo" src="{% static 'images/Emb-logo.svg' %}" alt="Company Logo">
+                <div class="job-title-desc">
+                    <h1 class="fs-500 fw-bold"></h1>
+                    <ul class="job-desc">
+                        <li class="fs-200 fw-bold">Fulltime</li>
+                        <li class="fs-200 fw-bold">Onsite</li>
+                    </ul>
+                </div>
+            </div>
+            <span class="close-btn" onclick="closetableModal()">&times;</span>
+        </div>
+        <div class="custom-modal-body">
+            <input type="hidden" class="ApplicationCode" name="AppCode">
+            <h1>Calendar View</h1>
+        </div>
+    </div>
+</div>
+
+
+<!-- EDIT MODADL -->
+<div class="custom-modal" id="progress-custom-modal">
+    <div class="custom-modal-content">
+        <div class="custom-modal-header app-form">
+            <div class="jobdetails-header">
+               <h1 class="fs-500 fw-bold">Application Form</h1>
+            </div>
+            <span class="close-btn" onclick="closetableModal()">&times;</span>
+        </div>
+        <div class="custom-modal-body">
+            <input type="hidden" class="ApplicationCode" name="AppCode">
+            <div class="app-stages">
+                <div class="stage-icon">
+                    <label for="icon" class="fs-300 fw-bold txt-color-txt-clr-light-neutral">1st Stage</label>
+                    <span class="material-symbols-outlined">
+                        communication
+                    </span>
+                </div>
+                <div class="stage-details">
+                    <h5 class="fs-400 fw-bold">Initial Interview</h5>
+                    <button class="init-interview fs-400 fw-bold">Done</button>
+                </div>
+            </div>
+            <div class="app-stages">
+                <div class="stage-icon">
+                    <label for="icon" class="fs-300 fw-bold txt-color-txt-clr-light-neutral">2nd Stage</label>
+                    <span class="material-symbols-outlined">
+                        menu_book
+                    </span>
+                </div>
+                <div class="exam-stage-details">
+                    <div class="exam-header">
+                        <h5 class="fs-400 fw-bold">Employment Exams</h5>
+                        <button class="init-interview fs-400 fw-bold">Done</button>
+                    </div>
+                    <div class="exam-scores stage-details">
+                        <div class="exam">
+                         <h5 class="fs-300 txt-color-txt-clr-light-neutral">IQ Exam:</h5>
+                         <input type="text" class="exam-score fs-300 txt-color-txt-clr-light-neutral">
+                        </div>
+                        <div class="exam">
+                         <h5 class="fs-300 txt-color-txt-clr-light-neutral">EQ Exam:</h5>
+                         <input type="text" class="exam-score fs-300 txt-color-txt-clr-light-neutral">
+                        </div>
+                        <div class="exam">
+                         <h5 class="fs-300 txt-color-txt-clr-light-neutral">AQ Exam:</h5>
+                         <input type="text" class="exam-score fs-300 txt-color-txt-clr-light-neutral">
+                        </div>
+                     </div>
+                </div>
+              
+            </div>
+            <div class="app-stages">
+                <div class="stage-icon">
+                    <label for="icon" class="fs-300 fw-bold txt-color-txt-clr-light-neutral">3rd Stage</label>
+                    <span class="material-symbols-outlined">
+                        user_attributes
+                    </span>
+                </div>
+                <div class="stage-details">
+                    <h5 class="fs-400 fw-bold">Employee CI/BI</h5>
+                    <button class="init-interview fs-400 fw-bold">Done</button>
+                </div>
+            </div>
+            <div class="app-stages">
+                <div class="stage-icon">
+                    <label for="icon" class="fs-300 fw-bold txt-color-txt-clr-light-neutral">4th Stage</label>
+                    <span class="material-symbols-outlined">
+                        communication
+                    </span>
+                </div>
+                <div class="stage-details">
+                    <h5 class="fs-400 fw-bold">Final Interview With Department Head</h5>
+                    <button class="init-interview fs-400 fw-bold">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- dELETE MODADL -->
+<div class="custom-modal" id="delete-custom-modal">
+    <div class="custom-modal-content">
+        <div class="custom-modal-header">
+            <div class="jobdetails-header">
+                <img class="company-logo" src="{% static 'images/Emb-logo.svg' %}" alt="Company Logo">
+                <div class="job-title-desc">
+                    <h1 class="fs-500 fw-bold"></h1>
+                    <ul class="job-desc">
+                        <li class="fs-200 fw-bold">Fulltime</li>
+                        <li class="fs-200 fw-bold">Onsite</li>
+                    </ul>
+                </div>
+            </div>
+            <span class="close-btn" onclick="closetableModal()">&times;</span>
+        </div>
+        <div class="custom-modal-body">
+            <input type="hidden" class="ApplicationCode" name="AppCode">
+            <h1 class="fs-500 fw-bold txt-color-txt-clr-light-neutral "></h1>
+
+            <div class="btn-action-modal">
+                <button class="cancel-action fs-400 fw-bold">Cancel</button>
+                <button class="reject-action fs-400 fw-bold" onclick="deleteEmployee()">Reject</button>
+            </div>
+        </div>
+    </div>
+</div>
+

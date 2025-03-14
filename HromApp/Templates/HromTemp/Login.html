@@ -1,0 +1,231 @@
+{% extends "HromTemp/base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+<link rel="stylesheet" href="{%static 'css/login.css'%}">
+
+
+    <main class="Wrapper" id="main-section">
+
+        <div class="main-grid-layout first-page-home">
+
+            <div class="first-child">
+                <header class="first-main-header">
+                    <img class="main-logo" src="{%static 'images/SecondaryJgcLogo.svg'%}" alt="">
+                </header>
+    
+                <div id="signup" class="signup" style="display: none;">
+                    <form id="sign-up-form" action="" class="sign-up-form">
+                        <div class="first-main-header-2">
+                            <h1 class="fs-900 fw-bold">Create An Account To Find Your Ideal Job.</h1>
+                        </div>
+                        <input id="fulname-val" class="fs-400 fulname-field" type="text" placeholder="Fullname" autocomplete="off" required>
+                        <input id="username-val" class="fs-400 username-field" type="text" placeholder="Username" autocomplete="off" required>
+                        <input id="password-val" class="fs-400 password-field" type="password" placeholder="Password" autocomplete="new-password" required>
+                        <input id="contact-val" class="fs-400 username-field" type="text" placeholder="Contact #" autocomplete="off" required>
+                        <input id="email-val" class="fs-400 password-field" type="text" placeholder="Email Address" autocomplete="off" required>
+                        <div class="signup-btn">
+                            <button  id="customer-btn" class=" fs-400 signup-btn">Sign Up</button>
+                            <button type="button" class="cancel-btn" data-show="#first-main-body, #first-main-footer" data-hide="#signup">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="first-main-body" class="first-main-body">
+                    <p class="fs-500 fw-regular">Connecting talent and opportunities</p>
+                    <h1 class="fs-1000 fw-bold"> Do You Want To Be Part Of The Company With Social <br>Conscience?</h1>
+                </div>
+
+                <div id="first-main-footer" class="first-main-footer">
+                    <div class="first-main-footer-inner">
+                        <button id="sign-up-btn" data-show="#signup" data-hide="#first-main-body, #first-main-footer">
+                            Sign Up
+                        </button>
+                        <a href="#about-section" class="fs-400 explore-link">Explore The <br>Company</a>
+                    </div>
+                </div>
+            </div>
+            <div class="second-child">
+                <header class="sec-main-header">
+                    <h5 class="fs-400">EMB Capital <br>Lending Corporation</h5>
+                </header>
+            </div>
+
+        </div>
+        
+    </main>
+
+    <div id="Second-section" class="Second-page">
+        <div class="nav">
+             <div class="secondary-logo">
+                <a href="#main-section" class="main-section"> <img class="secondary-logo-img" src="{%static 'images/SecondaryJgcLogo.svg'%}" alt=""></a>
+                
+             </div>
+
+             <div class="nav-list">
+                 <div class="about-link">
+                     <a href="#about-section" class="fs-400 fw-bold about-sect-link">About us</a>
+                 </div>
+                 <div class="our-service">
+                     <a href="#service-section" class="fs-400 fw-bold service-sect-link">Our Service</a>
+                 </div>
+                 <div class="contact-us">
+                     <a href="#contact-section" class="fs-400 fw-bold contact-section-link">Contact us</a>
+                 </div>
+                 <div class="login-btn">
+                    <a onclick="openModal()" class="fs-400 fw-bold explore-link">Sign In</a>
+                </div>
+             </div>
+             
+        </div>
+
+        <div class="bg-service-about">
+
+            <div class="Wrapper about-page" id= "about-section">
+                    <div class="about-us-intro">
+                        <h1 class="fs-600 fw-bold">About Us</h1>
+                        <p class="fs-500">Welcome to Jamero Group of Companies—your trusted partner in lending, finance, and property management. Driven by innovation and excellence, we deliver tailored solutions to empower your financial success.</p>
+                    </div>
+
+                    <div class="core-values">
+                        <div class="core core-value1">
+                            <img class="core-values-img" src="{%static 'images/Dynamism.svg'%}" alt="">
+                            <p class="fs-500 fw-regular core-values-txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                        </div>
+
+                        <div class="core core-value2">
+                            <p class="fs-500 fw-regular core-values-txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                            <img class="core-values-img" src="{%static 'images/Proffesionalism.svg'%}" alt="">
+                        </div>
+
+                        <div class="core core-value3">
+                            <img class="core-values-img" src="{%static 'images/Justice.svg'%}" alt="">
+                            <p class="fs-500 fw-regular core-values-txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                        </div>
+
+                    </div>
+                    
+            </div>
+
+            <div class="Wrapper service-page" id="service-section">
+                    <div class="service-header">
+                        <h1 class="fs-900 fw-bold">What we do</h1>
+                    </div>
+
+                    <div class="service-container">
+
+                        <div class="service-card lending-service">
+                            <img class="service-logo" src="{%static 'images/LendingService.svg'%}" alt="">
+                            <h5 class="fs-500 fw-bold">
+                                Lending Corporation
+                            </h5>
+                            <p class="fs-400 fw-bold">
+                                Offering flexible and customer-friendly loan solutions to support financial growth and stability.
+                            </p>
+                        </div>
+
+                        <div class="service-card finance-service">
+                            <img class="service-logo" src="{%static 'images/FinanceService.svg'%}" alt="">
+                            <h5 class="fs-500 fw-bold">
+                                Finance Services
+                            </h5>
+                            <p class="fs-400 fw-bold">
+                                Providing expert financial management and investment opportunities tailored to individual and corporate needs.
+                            </p>
+                        </div>
+
+                        <div class="service-card property-service">
+                            <img class="service-logo" src="{%static 'images/PropertyService.svg'%}" alt="">
+                            <h5 class="fs-500 fw-bold">
+                                Property Management
+                            </h5>
+                            <p class="fs-400 fw-bold">
+                                Delivering top-tier property management solutions to enhance value, ensure maintenance, and create thriving communities.
+                            </p>
+                        </div>
+
+                    </div>
+            </div>
+            
+        </div>
+
+        <div class="moments-matter">
+
+            <div class="moments-matter-container">
+                
+                <div class="Wrapper moments-matter-header">
+                    <h1 class="fs-900 fw-bold">Moments That Matter</h1>
+                </div>
+
+                <div class="moments-matter-img">
+                    <div class="moments-img-1"></div>
+                    <div class="moments-img-2"></div>
+                    <div class="moments-img-3"></div>
+                    <div class="moments-img-4"></div>
+                    <div class="moments-img-5"></div>
+                    <div class="moments-img-6"></div>
+                    <div class="moments-img-7"></div>
+                    <div class="moments-img-8"></div>
+                    <div class="moments-img-9"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="contact-section" id="contact-section">
+
+            <div class="Wrapper-narrow contact-content">
+                <img class="corner-left-design" src="{%static 'images/corner-left-design.svg'%}" alt="">
+                <h1 class="fs-600 fw-bold">Join us to grow through lending, finance, and property management.</h1>
+                <button id="customer-btn" class="fs-400 fw-bold contact-btn">Submit Applications</button>
+                <img class="corner-right-design" src="{%static 'images/corner-right-design.svg'%}" alt="">
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div class="custom-modal" id="login-custom-modal">
+        <div class="custom-modal-content">
+            <div class="login-modal-header">
+                <img class="Jgc-login" src="{% static 'images/JGCLogo2.svg' %}" alt="">
+                <h1 class="fs-500 fw-bold txt-color-txt-clr-dark-neutral">Let's Get Started</h1>
+                <p class="fs-300 txt-color-txt-clr-light-neutral">
+                    Join us to grow through lending, finance, and property management.
+                </p>
+            </div>
+            <div class="login-modal-body">
+                <div class="login-fields">
+                    <div class="login-field">
+                        <label for="login-username" class="fs-300 fw-bold txt-color-txt-clr-light-neutral">Username</label>
+                        <input id="login-username" class="fs-400 input-login" type="text" autocomplete="off" required>
+                    </div>
+                    
+                    <div class="login-field">
+                        <label for="login-password" class="fs-300 fw-bold txt-color-txt-clr-light-neutral">Password</label>
+                        <input id="login-password" class="fs-400 input-login" type="password" autocomplete="new-password" required>
+                    </div>
+                    
+                    <button id="login-btn" class="fs-400 fw-bold sign-in-now">Sign In</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{% static 'js/reqHandler.js' %}"></script>
+    <script src="{% static 'js/loginmodal.js'%}"></script>
+    <script src="{% static 'js/customerReq.js' %}"></script>
+    <script src="{% static 'js/sweetalert.js'%}"></script>
+
+
+ 
+
+{%endblock content%}

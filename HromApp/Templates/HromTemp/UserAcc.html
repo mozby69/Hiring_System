@@ -1,0 +1,136 @@
+{% load static %}
+<link href= "{%static 'css/useracc.css'%}" rel="stylesheet">
+
+<div class="user-list-header">
+    <h1 class="fs-500 fw-bold">130 Users Found</h1>
+
+    <div class="record-list">
+        <label for="records_to_display" class="fs-400 txt-color-txt-clr-light-neutral">Show:</label>
+        <select class="fs-400 txt-color-txt-clr-light-neutral" name="records_to_display" id="records_to_display">
+            <option value="10" selected>10</option>
+            <option value="30">30</option>
+            <option value="60">60</option>
+            <option value="130">130</option>
+            <option value="260">230</option>
+            <option value="315">315</option>
+            <option value="{{total_employee}}">{{total_employee}}</option>
+        </select>
+    </div>
+</div>
+
+<div class="hiring-filter">
+    <div class="filters branch-filter">
+        <input class="fs-400 fw-regular" type="text" placeholder="Select Branch">
+    </div>
+    <div class="filters job-filter">
+        <input class="fs-400 fw-regular" type="text" placeholder="Select Job Type">
+    </div>
+    <div class="filters date-filter">
+        <input class="fs-400 fw-regular txt-color-txt-clr-light-neutral" type="date">
+    </div>
+    <button class="btn-add fs-400 fw-bold"  onclick="handleJobActionClick(event, 'addJob-custom-modal')"><span class="material-symbols-outlined" >
+        filter_alt
+    </span>Apply Filter</button>
+</div>
+
+<div class="user-list-display">
+
+    <div class="user-list">
+        {%for user in User_Acc%}
+        <div class="user-list-card" data-usercode = "{{user.UserCode}}">
+            <input type="hidden" value="{{user.UserCode}}" class="usercode">
+            <div class="user-header-fullname">
+                <h1 class="fs-400 fw-bold user-fullname-card">{{user.UserFullname}}</h1>
+                <div class="fs-200 fw-bold {%if user.is_active%}acc-status-active{% else %} acc-status-off {%endif%}">
+                   {%if user.is_active%}
+                   active
+                    {%else%}
+                    offline
+                    {%endif%}
+                </div>
+            </div>
+
+            <div class="username-body">
+                <div class="username-container">
+                    <div class="circle-holder">
+                        <h5 class="fs-400 fw-bold">{{user.Username|default:"X"|first|upper}}</h5>
+                    </div>
+                    <div class="username fs-400 fw-regular txt-color-txt-clr-light-neutral">{{user.Email}}</div>
+                </div>
+                <div class="contact fs-400 fw-regular txt-color-txt-clr-light-neutral">{{user.ContactNum}}</div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <div class="user-display">
+        <div class="user-display-header">
+            <h1 class="fs-600 fw-bold user-fullname"></h1>
+            <span class="material-symbols-outlined more-btn">more_horiz</span>
+        </div>
+
+        <div class="About-user">
+            <h5 class="fs-400 fw-bold txt-color-txt-clr-light-neutral">About</h5>
+            <p class="fs-300 fw-regular txt-color-txt-clr-light-neutral user-about">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+    
+        <ul class="user-details">
+
+            <li class="user-item">
+                <div class="user-label">
+                    <span class="label-icon material-symbols-outlined">account_circle</span>
+                    <span class="fs-400 fw-bold label">Username</span>
+                </div>
+                <span class="fs-400 fw-bold value user-username"></span>
+            </li>
+
+            <li class="user-item">
+                <div class="user-label">
+                    <span class="label-icon material-symbols-outlined">call</span>
+                    <span class="fs-400 fw-bold label">Contact</span>
+                </div>
+                <span class="fs-400 fw-bold value user-contact" ></span>
+            </li>
+
+            <li class="user-item">
+                <div class="user-label">
+                    <span class="label-icon material-symbols-outlined">passkey</span>
+                    <span class="fs-400 fw-bold label">Password</span>
+                </div>
+                <span class="fs-400 fw-bold value user-password" ></span>
+            </li>
+
+            <li class="user-item">
+                <div class="user-label">
+                    <span class="label-icon material-symbols-outlined">mail</span>
+                    <span class="fs-400 fw-bold label">Gmail</span>
+                </div>
+                <span class="fs-400 fw-bold value user-gmail"></span>
+            </li>
+            
+        </ul>
+
+        <ul class="nav nav-tabs">
+
+            <li class="nav-item">
+                <a class="nav-link active fs-300 fw-bold" data-target="Pending-Applications">Pending Applications</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link fs-300 fw-bold" data-target="Rejected-Applications">Rejected Applications</a>
+            </li>
+            
+        </ul>
+        
+        <div class="tab-content active" id="Pending-Applications">
+            <h1>Pending Applications Content</h1>
+        </div>
+        
+        <div class="tab-content" id="Rejected-Applications">
+            <h1>Rejected Applications Content</h1>
+        </div>
+
+    </div>
+    
+</div>
