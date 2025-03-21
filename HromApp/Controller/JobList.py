@@ -22,7 +22,9 @@ def insert_jobList(request):
             data = json.loads(request.body)
             job_title = data.get('job_title')
             job_branch_code = data.get('job_branch') 
-            job_location = data.get('job_location')
+            job_province = data.get('job_province')
+            job_city = data.get('job_city')
+            job_brgy = data.get('job_brgy')
             job_desc = data.get('job_desc')
             emp_role = data.get('emp_role')
             employment_types = data.get('employment_types', [])
@@ -49,7 +51,9 @@ def insert_jobList(request):
                 JobCode=new_job_code,
                 JobTitle=job_title,
                 BranchCode=branch,
-                JobLoc=job_location,
+                JobProvince=job_province,
+                JobCity=job_city,
+                JobBrgy=job_brgy,
                 JobDesc=job_desc,
                 JobRole=emp_role,
                 JobTypes=employment_types,
@@ -80,7 +84,9 @@ def get_job_details(request, job_code):
                 'JobCode': job.JobCode,
                 'JobTitle': job.JobTitle,
                 'BranchCode': job.BranchCode.BranchCode,
-                'JobLoc': job.JobLoc,
+                'JobProvince': job.JobProvince,
+                'JobCity': job.JobCity,
+                'JobBrgy': job.JobBrgy,
                 'JobDesc': job.JobDesc,
                 'JobRole': job.JobRole,
                 'JobTypes': job.JobTypes if isinstance(job.JobTypes, list) else (json.loads(job.JobTypes) if job.JobTypes else []),
@@ -102,7 +108,9 @@ def update_jobList(request):
             job_code = data.get('job_code')
             job_title = data.get('job_title')
             job_branch_code = data.get('job_branch')
-            job_location = data.get('job_location')
+            job_province = data.get('job_province')
+            job_city = data.get('job_city')
+            job_brgy = data.get('job_brgy')
             job_desc = data.get('job_desc')
             emp_role = data.get('emp_role')
             employment_types = data.get('employment_types', [])
@@ -117,7 +125,9 @@ def update_jobList(request):
 
             job.JobTitle = job_title
             job.BranchCode = branch
-            job.JobLoc = job_location
+            job.JobProvince = job_province
+            job.JobCity = job_city
+            job.JobBrgy = job_brgy
             job.JobDesc = job_desc
             job.JobRole = emp_role
             job.JobTypes = employment_types

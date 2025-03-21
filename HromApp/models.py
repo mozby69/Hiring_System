@@ -44,7 +44,9 @@ class JobList(models.Model):
     BranchCode = models.ForeignKey(Branches, on_delete = models.SET_NULL, to_field = 'BranchCode', null = True)
     JobDate = models.DateTimeField(default=datetime.now, null=True)
     JobTitle = models.CharField(max_length=50,default="N/D",null=True,blank=True)
-    JobLoc = models.CharField(max_length=100,default="N/D",blank=True,null=True)
+    JobProvince = models.CharField(max_length=100,default="N/D",blank=True,null=True)
+    JobCity = models.CharField(max_length=100,default="N/D",blank=True,null=True)
+    JobBrgy = models.CharField(max_length=100,default="N/D",blank=True,null=True)
     JobRole = models.CharField(max_length=100, blank=True,null=True,default="N/D")
     JobDesc = models.CharField(max_length=120, default="N/D",null=True,blank=True)
     JobBenefits = models.JSONField(null=True, blank=True)
@@ -91,9 +93,10 @@ class JobApplication(models.Model):
     JobCode = models.ForeignKey(JobList, on_delete= models.SET_NULL, to_field= 'JobCode', null = True) 
     DateApplied = models.DateField(default=date.today(),null=True)
     YearsofExp = models.CharField(max_length=20,blank=False,null=False,default="N/D")
-    ExpectSalary = models.CharField(max_length=20,default="N/D",null=False,blank=False)
+    ExpectedSalary = models.CharField(max_length=20,default="N/D",null=False,blank=False)
     ApplicationStatus = models.CharField(max_length=50,blank=False,null=False,default="N/D")
     Remarks = models.CharField(max_length=100,blank=False,null=False,default="N/D")
+    
 
 
 class InProgressApplication(models.Model):

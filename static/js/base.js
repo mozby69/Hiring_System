@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (url.includes('joblisting')) {
                     initializeDropdowns();
                     job();
+                    api_jobLocation();
                 }
                 if (url.includes('facemetrics')) {
                     console.log("dasdsdasa")

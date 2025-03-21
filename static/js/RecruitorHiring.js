@@ -222,7 +222,9 @@ function deleteEmployee() {
                     confirmButtonText: "OK"
                 })
                 if (activeTab === "newApplications"){
+        
                     mastlisttable.ajax.reload()
+                 
                 }
                 else if (activeTab === "pendingApplications"){
                     pendingtable.ajax.reload()
@@ -308,8 +310,10 @@ function updateActiveButton(activeTable) {
 
 document.addEventListener("DOMContentLoaded", function () {
     restoreSelectedTable();
+   
 });
 
+let calendarInstance = null;
 
 function opentableModal(modalId,applicantCode = "", applicantName = "", jobTitle = "", yearsOfExp = "", expectedSalary = "") {
     let modal = document.getElementById(modalId);
@@ -324,10 +328,22 @@ function opentableModal(modalId,applicantCode = "", applicantName = "", jobTitle
         modal.querySelector("input[placeholder='Enter your fullname']").value = applicantName;
         modal.querySelector("input[placeholder='Expected Salary']").value = expectedSalary;
         modal.querySelector("input[placeholder='Years of Experience']").value = yearsOfExp;
-    } else if (modalId === "edit-custom-modal") {
+    } 
+    
+    else if (modalId === "edit-custom-modal") {
         modal.querySelector(".job-title-desc h1").innerText = jobTitle;
         modal.querySelector(".ApplicationCode").value = applicantCode;
+        calendarSchedule(applicantCode);
+   
     }
+
+    else if (modalId === "immediate-sched-custom-modal") {
+        // modal.querySelector(".job-title-desc h1").innerText = jobTitle;
+        modal.querySelector(".ApplicationCode").value = applicantCode;
+        console.log("immediate sched");
+   
+    }
+
     else if (modalId === "delete-custom-modal") {
         modal.querySelector(".job-title-desc h1").innerText = jobTitle;
         modal.querySelector(".ApplicationCode").value = applicantCode;
@@ -341,6 +357,10 @@ function opentableModal(modalId,applicantCode = "", applicantName = "", jobTitle
     }
 
     modal.style.display = "block";
+
+    if (calendarInstance) {
+        setTimeout(() => calendarInstance.updateSize(), 0); // Update size after display
+    }
 }
 
 function handleActionClick(event, modalId) {
@@ -354,6 +374,94 @@ function handleActionClick(event, modalId) {
     opentableModal(modalId,applicantCode, applicantName, jobTitle, yearsOfExp, expectedSalary);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// CAlENDAR SCHEDULING ***************************************************************************
+
+function calendarSchedule(applicantCode) {
+    var calendarEl = document.getElementById('calendar');
+
+    if (!calendarEl) {
+        console.error("Calendar element not found!");
+        return;
+    }
+
+    if (calendarInstance) {
+        calendarInstance.destroy();
+    }
+
+    calendarInstance = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        height: 360,
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth'
+        },
+
+        dateClick: function(info) {
+            Swal.fire({
+                title: 'Confirm Schedule?',
+                text: `You clicked: ${info.dateStr}`,
+                input: 'text',
+                inputPlaceholder: 'Enter schedule details...',
+                showCancelButton: true,
+                confirmButtonText: 'Save',
+                cancelButtonText: 'Cancel',
+                inputValidator: (value) => {
+                    if (!value) {
+                        return 'Please enter a schedule description!';
+                    }
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let applicationCode = applicantCode; 
+
+                    let postData = {
+                        application_code: applicationCode,
+                        selected_date: info.dateStr,
+                        remarks: result.value
+                    };
+
+              
+                    PostReqHandler('/save-schedule/', postData, function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                title: 'Schedule Saved!',
+                                text: `Scheduled on ${info.dateStr}`,
+                                icon: 'success'
+                                }).then(() => {
+                                    location.reload();
+                                });
+
+                        } else {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: response.error,
+                                icon: 'error'
+                            });
+                        }
+                    });
+                }
+            });
+        }
+
+        
+    });
+    calendarInstance.render();
+    setTimeout(() => calendarInstance.updateSize(), 0);
+}
 
 
 

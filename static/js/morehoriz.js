@@ -46,9 +46,7 @@ function handleJobActionClick(event, modalId) {
 // Function to populate the edit modal
 function populateEditModal(jobCode) {
     fetch(`/get_job_details/${jobCode}/`)
-        .then(response => {
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
             if (data.success) {
                 const job = data.job;
@@ -62,10 +60,92 @@ function populateEditModal(jobCode) {
                 // Populate form fields
                 document.querySelector("#edit-job-code").value = job.JobCode || '';
                 document.querySelector("#edit-job-title").value = job.JobTitle || '';
-                document.querySelector("#edit-job-location").value = job.JobLoc || '';
                 document.querySelector("#edit-job-desc").value = job.JobDesc || '';
                 document.querySelector("#edit-emp-role").value = job.JobRole || '';
                 document.querySelector("#edit-job-branch").value = job.BranchCode || '';
+
+                // Province, City, Barangay Dropdowns
+                const provinceDropdown = document.querySelector("#edit-job-province");
+                const cityDropdown = document.querySelector("#edit-job-city");
+                const barangayDropdown = document.querySelector("#edit-job-brgy");
+
+                // Load Provinces and Set Selected Province
+                fetch("https://psgc.gitlab.io/api/provinces")
+                    .then(response => response.json())
+                    .then(data => {
+                        provinceDropdown.innerHTML = '<option value="">Select Province</option>';
+                        let selectedProvinceCode = null;
+                        data.forEach(province => {
+                            let option = document.createElement("option");
+                            option.value = province.code; // Use province CODE here
+                            option.textContent = province.name;
+                            if (province.name === job.JobProvince) {
+                                option.selected = true;
+                                selectedProvinceCode = province.code; // Get the correct province code
+                            }
+                            provinceDropdown.appendChild(option);
+                        });
+
+                        // Load cities after setting province
+                        if (selectedProvinceCode) {
+                            loadCities(selectedProvinceCode, job.JobCity);
+                        }
+                    });
+
+                // Load Cities based on Province Selection
+                provinceDropdown.addEventListener("change", function () {
+                    loadCities(this.value, null);
+                });
+
+                function loadCities(provinceCode, selectedCity) {
+                    if (!provinceCode) return;
+
+                    fetch(`https://psgc.gitlab.io/api/provinces/${provinceCode}/cities-municipalities`)
+                        .then(response => response.json())
+                        .then(data => {
+                            cityDropdown.innerHTML = '<option value="">Select City</option>';
+                            let selectedCityCode = null;
+                            data.forEach(city => {
+                                let option = document.createElement("option");
+                                option.value = city.code; // Use city CODE here
+                                option.textContent = city.name;
+                                if (selectedCity && city.name === selectedCity) {
+                                    option.selected = true;
+                                    selectedCityCode = city.code; // Get the correct city code
+                                }
+                                cityDropdown.appendChild(option);
+                            });
+
+                            // Load barangays after setting city
+                            if (selectedCityCode) {
+                                loadBarangays(selectedCityCode, job.JobBrgy);
+                            }
+                        });
+                }
+
+                // Load Barangays based on City Selection
+                cityDropdown.addEventListener("change", function () {
+                    loadBarangays(this.value, null);
+                });
+
+                function loadBarangays(cityCode, selectedBarangay) {
+                    if (!cityCode) return;
+
+                    fetch(`https://psgc.gitlab.io/api/cities-municipalities/${cityCode}/barangays`)
+                        .then(response => response.json())
+                        .then(data => {
+                            barangayDropdown.innerHTML = '<option value="">Select Barangay</option>';
+                            data.forEach(barangay => {
+                                let option = document.createElement("option");
+                                option.value = barangay.code; // Use barangay CODE here
+                                option.textContent = barangay.name;
+                                if (selectedBarangay && barangay.name === selectedBarangay) {
+                                    option.selected = true;
+                                }
+                                barangayDropdown.appendChild(option);
+                            });
+                        });
+                }
 
                 // Handle employment types
                 const employmentButtons = document.querySelectorAll("#edit-job-benefits .employment-type-btn");
@@ -123,6 +203,8 @@ function populateEditModal(jobCode) {
         .catch(error => console.error('Error fetching job details:', error));
 }
 
+
+
 // Helper function to create list items with delete buttons
 function createListItemWithDelete(text, list, type, isInitialPopulation = false) {
     const li = document.createElement('li');
@@ -171,7 +253,7 @@ function populateDeleteModal(jobCode) {
                 document.querySelector(".JobCode").value = job.JobCode;
                 document.getElementById("delete-job-title").textContent = job.JobTitle || 'N/A';
                 document.getElementById("delete-job-branch").textContent = job.BranchCode || 'N/A';
-                document.getElementById("delete-job-location").textContent = job.JobLoc || 'N/A';
+    
             } else {
                 console.error('Failed to fetch job details for deletion:', data.error);
             }

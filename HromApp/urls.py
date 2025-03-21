@@ -32,6 +32,7 @@ urlpatterns = [
       path('update_jobList/', JobList.update_jobList, name='update_jobList'),
       path('get_job_details/<str:job_code>/', JobList.get_job_details, name='get_job_details'),
       path('delete_job/<str:job_code>/',JobList.delete_job,name="delete_job"),
+      path('save-schedule/', RecruitHiring.save_schedule, name='save_schedule'),
 ]
 
 

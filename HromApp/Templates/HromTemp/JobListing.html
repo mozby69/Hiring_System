@@ -82,7 +82,7 @@
                 <span class="material-symbols-outlined">
                     location_on
                 </span>
-                <p class="fs-300 fw-regular txt-color-txt-clr-light-neutral">{{ job.JobLoc }}</p>
+                <p class="fs-300 fw-regular txt-color-txt-clr-light-neutral">{{ job.JobProvince }}, {{ job.JobCity|default:"N/A"}}</p>
             </div>
         </div>
 
@@ -151,12 +151,38 @@
                             </div>
                         </div>
 
-                        <div class="newJob-input-div">
-                            <label for="job-location" class="fs-400 fw-bold">Job Location</label>
-                            <div class="input-div">
-                                <input id="job-location" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" placeholder="Enter Job Location" type="text">
+                        <div class="newJob-input-div" style="display: grid; grid-template-columns: 1fr 1fr; gap: .4rem;">
+                      
+                            <div>
+                                <label for="job-province" class="fs-400 fw-bold">Province</label>
+                                <div class="input-div">
+                                    <select id="job-province" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" required>
+                                        <option value="">Select Province</option>
+                                    </select>
+                                </div>
+                            </div>
+                        
+                    
+                            <div>
+                                <label for="job-city" class="fs-400 fw-bold">City</label>
+                                <div class="input-div">
+                                    <select id="job-city" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" required>
+                                        <option value="">Select City</option>
+                                    </select>
+                                </div>
+                            </div>
+                        
+           
+                            <div>
+                                <label for="job-brgy" class="fs-400 fw-bold">Barangay</label>
+                                <div class="input-div">
+                                    <select id="job-brgy" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" required>
+                                        <option value="">Select Barangay</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
+                        
 
                     </div>
 
@@ -299,12 +325,38 @@
                                 <input id="edit-job-title" name="job_title" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" placeholder="Enter Job Title" type="text" required>
                             </div>
                         </div>
-                        <div class="newJob-input-div">
-                            <label for="edit-job-location" class="fs-400 fw-bold">Job Location</label>
-                            <div class="input-div">
-                                <input id="edit-job-location" name="job_location" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" placeholder="Enter Job Location" type="text" required>
+
+                        <div class="newJob-input-div" style="display: grid; grid-template-columns: 1fr 1fr; gap: .4rem;">
+                 
+                            <div>
+                                <label for="edit-job-province" class="fs-400 fw-bold">Province</label>
+                                <div class="input-div">
+                                    <select id="edit-job-province" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" required>
+                                        <option value="">Select Province</option>
+                                    </select>
+                                </div>
+                            </div>
+                        
+                      
+                            <div>
+                                <label for="edit-job-city" class="fs-400 fw-bold">City</label>
+                                <div class="input-div">
+                                    <select id="edit-job-city" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" required>
+                                        <option value="">Select City</option>
+                                    </select>
+                                </div>
+                            </div>
+                    
+                            <div>
+                                <label for="edit-job-brgy" class="fs-400 fw-bold">Barangay</label>
+                                <div class="input-div">
+                                    <select id="edit-job-brgy" class="fs-400 fw-bold txt-color-txt-clr-light-neutral" required>
+                                        <option value="">Select Barangay</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
+                        
                     </div>
                     <div class="col-2">
                         <label for="edit-job-desc" class="fs-400 fw-bold">Job Descriptions</label>
@@ -393,6 +445,7 @@
 <!-- DELETE MODAL -->
 <div class="custom-modal" id="deletejob-custom-modal">
     <div class="custom-modal-content">
+        
         <div class="custom-modal-header">
             <div class="job-comp-header">
                 <div class="job-header">

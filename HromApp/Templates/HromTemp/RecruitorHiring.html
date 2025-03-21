@@ -40,6 +40,13 @@
     </div>
 </div>
 
+
+
+
+
+
+
+
 <div class="hiring-filter">
         <button class="btn-add fs-400 fw-bold"><span class="material-symbols-outlined">
             docs_add_on
@@ -197,7 +204,8 @@
         </div>
         <div class="custom-modal-body">
             <input type="hidden" class="ApplicationCode" name="AppCode">
-            <h1>Calendar View</h1>
+            <!-- <h1>Calendar View</h1> -->
+            <div id="calendar"></div>
         </div>
     </div>
 </div>
@@ -307,6 +315,33 @@
             <div class="btn-action-modal">
                 <button class="cancel-action fs-400 fw-bold">Cancel</button>
                 <button class="reject-action fs-400 fw-bold" onclick="deleteEmployee()">Reject</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- IMMEDIATE SCHEDULE MODAL -->
+ 
+<div class="custom-modal" id="immediate-sched-custom-modal">
+    <div class="custom-modal-content">
+        <div class="custom-modal-header">
+            <div class="jobdetails-header">
+                <img class="company-logo" src="{% static 'images/Emb-logo.svg' %}" alt="Company Logo">
+               
+            </div>
+            <span class="close-btn" onclick="closetableModal()">&times;</span>
+        </div>
+        <div class="custom-modal-body">
+            <input type="hidden" class="ApplicationCode" name="AppCode">
+            <h6 class="fs-400 fw-bold txt-color-txt-clr-light-neutral ">Are you sure you want to Schedule this immediately?</h6>
+
+            <div class="btn-action-modal">
+                <button class="fs-400 fw-bold" style="padding-inline:1rem;border-radius: 0.3rem;background-color: #668EBC;color:white;border:none;">Save</button>
+                <button class="cancel-action fs-400 fw-bold" onclick="closetableModal()">Close</button>
             </div>
         </div>
     </div>
